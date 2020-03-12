@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+{% block title %} Update Call {% endblock %}
+{% block body %}
+
+  
+  <nav class="navbar navbar-light mt-4" style="background-color: #e3f2fd;">
+    <form class="form-inline" style="margin-left: 400px;" action="/callupdate/" method="POST">{% csrf_token %}
+        <b>Enter Service Order</b>
+        {% if alldata %}
+        {% for e in alldata %}
+          <input class="form-control mx-sm-2" type="search" name="sod" placeholder="Enter Service Order" value="{{e.Service_Order}}" maxlength="6" aria-label="Search">
+          <button class="btn btn-primary my-2 my-sm-0" id="divpr" type="submit">Go</button>
+          {% endfor %}
+          {% else %}
+          <input class="form-control mx-sm-2" type="search" name="sod" placeholder="Enter Service Order" value="{{e.Service_Order}}" maxlength="6" aria-label="Search">
+          <button class="btn btn-primary my-2 my-sm-0" id="divpr" type="submit">Go</button>
+          {% endif %}
+        </form>
+  </nav>
+  <center>
+  <h2>{{msg}}</h2>
+</center>
+{% endblock %}
+{% block js %}
+<script>
+function openwind(wn){
+  wn = window.open("/appdetailsadd/{{e.Location}}","toolbar=0,scrollbars=yes,resizable=yes");
+}
+</script>
+{% endblock %}
